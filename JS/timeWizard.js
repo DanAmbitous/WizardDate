@@ -1,4 +1,4 @@
-function $(selector)
+export function $(selector)
 {
     const date = new Date();
     const self =
@@ -27,7 +27,15 @@ const getTime = date.toLocaleTimeString()
 
 
 //test code here//
-$('button').on('click',()=> {
+
+/*document.querySelector('button').addEventListener('click',function(){
+    const date = Date();
+    document.querySelector('h1').innerText = date.toLocaleTimeString();
+})*/
+
+
+
+/*$('button').on('click',()=> {
     console.log(`${getYear}/${getDay}/${getMonth}`)
     console.log($('h1').element.innerText = getTime);
-})
+})*/
