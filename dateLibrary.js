@@ -3,6 +3,8 @@ class WizLib {
         this.date = date;
         this.dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         this.monthOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novermber", "December"];
+        this.monthToday = this.monthOfYear[this.date.getMonth()];
+        this.dayToday = this.dayOfWeek[this.date.getDay()]
     }
 
     time() {
@@ -16,23 +18,6 @@ class WizLib {
         
         return [year, month, day, hour, minute, second, milliseconds];
     }
-    
-    day() {
-        return this.dayOfWeek[this.date.getDay()];
-    }
-
-    hour() {
-        let hour = this.date.getHours();
-        let minute = this.date.getMinutes();
-        return [hour, minute];
-    }
-
-    minute() {
-        let minute = this.date.getMinutes();
-        let second = this.date.getSeconds();
-
-        return `${hour}:${second}`;
-    }
 
     amPmFormate() {
         var d = this.date;
@@ -41,10 +26,12 @@ class WizLib {
         var s = d.getSeconds();
         var dd = "AM";
         var h = hh;
+
         if (h >= 12) {
              h = hh - 12;
             dd = "PM";
         }
+        
         if (h == 0) {
             h = 12;
         }
@@ -52,14 +39,68 @@ class WizLib {
         /* Syntax for teranary operators
         output = (condition) ? the if body : the else body 
         */
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
 
-        m = (m < 10) ? "0" + m : m
-        s = (s < 10) ? "0" + s : s
+        return `${h}:${m}:${s}`;
+    }
 
-        var replacement = h + ":" + m + ":" + s;
-        replacement += " " + dd;
-          
-        return replacement;
+    date() {
+        return `${this.date.getFullYear()}/${this.monthToday}/${this.date.getDay()}`;
+    }
+
+    year() {
+        return this.date.getFullYear();
+    }
+
+    month() {
+        return this.monthToday;
+    }
+    
+    day() {
+        return this.dayToday;
+    }
+
+    hour() {
+        let hour = this.date.getHours();
+
+        hour = (hour < 10) ? "0" + hour : hour  
+
+        return hour
+    }
+
+    minute() {
+        let minute = this.date.getMinutes();
+
+        return minute;
+    }
+
+    second() {
+        let second = this.date.getSeconds();
+
+        return second;
+    }
+
+    millisecond() {
+        let millisecond = this.date.getMilliseconds();
+
+        return millisecond;
+    }
+
+    past(subtractDays) {
+        let d = new Date();
+
+        d.setDate(d.getDate() - subtractDays);
+
+        return `${subtractDays} days from now was ${d.toLocaleString()}`;
+    }
+
+    future(addDays) {
+        let d = new Date();
+
+        d.setDate(d.getDate() + addDays);
+
+        return `${addDays} days from now are ${d.toLocaleString()}`;
     }
 }
 
