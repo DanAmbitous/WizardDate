@@ -4,7 +4,7 @@ class WizLib {
         this.dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         this.monthOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novermber", "December"];
         this.monthToday = this.monthOfYear[this.date.getMonth()];
-        this.dayToday = this.dayOfWeek[this.date.getDay()]
+        this.dayToday = this.dayOfWeek[this.date.getDay()];
     }
 
     time() {
@@ -87,7 +87,7 @@ class WizLib {
         return millisecond;
     }
 
-    past(subtractDays) {
+    pastDay(subtractDays) {
         let d = new Date();
 
         d.setDate(d.getDate() - subtractDays);
@@ -95,12 +95,28 @@ class WizLib {
         return `${subtractDays} days from now was ${d.toLocaleString()}`;
     }
 
-    future(addDays) {
+    futureDay(addDays) {
         let d = new Date();
 
         d.setDate(d.getDate() + addDays);
 
         return `${addDays} days from now are ${d.toLocaleString()}`;
+    }
+
+    pastHour(subtractHour) {
+        let d = new Date();
+
+        d.setHours(d.getHours() - subtractHour);
+
+        return `${subtractHour} hours from now was ${d.toLocaleString()}`;
+    }
+
+    futureHour(addHour) {
+        let d = new Date();
+
+        d.setHours(d.getHours() + addHour);
+
+        return `${addHour} hours from now was ${d.toLocaleString()}`;
     }
 }
 
