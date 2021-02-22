@@ -1,9 +1,9 @@
 # Welcome to Time Wizard
 
 ## what is this?
-Time Wizard is a library which make working 
+Time Wizard is a library which makes working 
 with date methods in Javascript much easier
-for beginners and people who dont like
+for beginners and people who don't like
 writing code and can make creating stop
 watches and alarms easier.
 
