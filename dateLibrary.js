@@ -1,5 +1,5 @@
 class WizLib {
-    constructor(date = new Date()) {
+    constructor(date = new Date()) { //Default value in constructor
         this.date = date;
         this.dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         this.monthOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novermber", "December"];
@@ -45,8 +45,52 @@ class WizLib {
         return `${h}:${m}:${s}`;
     }
 
-    date() {
-        return `${this.date.getFullYear()}/${this.monthToday}/${this.date.getDay()}`;
+    dateMDY() {
+        let year = this.date.getFullYear();
+        let month = this.date.getMonth();
+        let day = this.date.getDate();
+
+        return `${month + 1}/${day}/${year}`;
+    }
+
+    dateDMY() {
+        let year = this.date.getFullYear();
+        let month = this.date.getMonth();
+        let day = this.date.getDate();
+
+        return `${day}/${month + 1}/${year}`;
+    }
+
+    dateYMD() {
+        let year = this.date.getFullYear();
+        let month = this.date.getMonth();
+        let day = this.date.getDate();
+
+        return `${year}/${month + 1}/${day}`;
+    }
+
+    dateMDYWord() {
+        let year = this.date.getFullYear();
+        let month = this.monthToday;
+        let day = this.date.getDate();
+
+        return `${month}/${day}/${year}`;
+    }
+
+    dateDMYWord() {
+        let year = this.date.getFullYear();
+        let month = this.monthToday;
+        let day = this.date.getDate();
+
+        return `${day}/${month + 1}/${year}`;
+    }
+
+    dateYMDWord() {
+        let year = this.date.getFullYear();
+        let month = this.monthToday;
+        let day = this.date.getDate();
+
+        return `${year}/${month}/${day}`;
     }
 
     year() {
@@ -56,9 +100,17 @@ class WizLib {
     month() {
         return this.monthToday;
     }
+
+    monthNumber() {
+        return this.date.getMonth();
+    }
     
     day() {
         return this.dayToday;
+    }
+
+    dayNumber() {
+        return this.date.getDay();
     }
 
     hour() {
@@ -92,7 +144,7 @@ class WizLib {
 
         d.setDate(d.getDate() - subtractDays);
 
-        return `${subtractDays} days from now was ${d.toLocaleString()}`;
+        return `${subtractDays} days before today ${d.toLocaleString()}`;
     }
 
     futureDay(addDays) {
@@ -100,8 +152,8 @@ class WizLib {
 
         d.setDate(d.getDate() + addDays);
 
-        return `${addDays} days from now are ${d.toLocaleString()}`;
-    }
+        return `${addDays} days from now are ${d.toLocaleString()} `; //toLocaleString just changes how it looks when outputed
+    } 
 
     pastHour(subtractHour) {
         let d = new Date();

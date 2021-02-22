@@ -9,12 +9,9 @@
 </head>
 <body>
     <script type="text/javascript">
-        let time = new WizLib(new Date("Jan 25 2015"));
-        console.log(time.amPmFormate())
+        let time = new WizLib();
 
-        let rn = new WizLib();
-        let notRn = rn.futureDay(5);
-        console.log(notRn);
+        console.log(time.futureDay(10));
     </script>
 </body>
 </html>
