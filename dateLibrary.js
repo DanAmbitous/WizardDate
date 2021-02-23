@@ -1,4 +1,4 @@
-class WizLib {
+class WizLib { //Methods made by Danial
     constructor(date = new Date()) { //Default value in constructor
         this.date = date;
         this.dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -255,11 +255,98 @@ class WizLib {
         let yearDifference = date1.getFullYear() - date2.getFullYear();
 
         return yearDifference;
-    }   
-}
+    }  
+    
+    timerSecond(second) {
+        let timer = setInterval(function() {
+            console.log(second);
+            second--;
 
-function $(element) {
-    return document.querySelector(element);
+            if (second < 0) {
+                clearInterval(timer);
+            }
+        }, 1000)
+    }
+
+    timerSecondOne(second) {
+        let timer = setInterval(function() {
+            console.log(second);
+            second--;
+
+            if (second === 0) {
+                clearInterval(timer);
+            }
+        }, 1000)
+    }
+
+    timerMinute(time) {
+        time = time * 60;
+
+        let timer = time, minutes, seconds;
+
+        let interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            timer--;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            if (timer < 0) {
+                clearInterval(interval)
+            }
+
+            console.log(`${minutes}:${seconds}`);
+        }, 1000);
+    }
+
+    timerMinuteOne(time) {
+        time * 60;
+
+        let timer = time, minutes, seconds;
+
+        let interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            timer--;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            if (timer === 0) {
+                clearInterval(interval)
+            }
+
+            console.log(`${minutes}:${seconds}`);
+        }, 1000);
+    }
+
+    /*secondToHMS(seconds) { //Not working
+        let hour = parseInt(seconds / 3600);
+        let remainderSeconds = parseInt(seconds % 3600);
+        let minute = parseInt(remainderSeconds / 60);
+        let second = parseInt(remainderSeconds % 60);
+
+        hour = hour < 10 ? `0${hour}` : hour;
+        minute = minute < 10 ? `0${minute}` : minute;
+        second = second < 10 ? `0${second}` : second;
+      
+        return `${hour}:${minute}:${second}`;
+    }*/
+
+    timerHour(seconds) {
+        let intervalTimer = setInterval(function() {
+            if (seconds === 0) {
+              clearInterval(intervalTimer);
+            }
+
+            secondToHMS(seconds);
+
+            seconds--;
+        }, 1000)
+    }
 }
 
 /*
