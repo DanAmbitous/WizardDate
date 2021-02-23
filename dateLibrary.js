@@ -258,6 +258,10 @@ class WizLib {
     }   
 }
 
+function $(element) {
+    return document.querySelector(element);
+}
+
 /*
 If a method in the class doesn't have a any attributes (this.something), can be convereted to a static method like this 
 
