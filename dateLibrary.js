@@ -255,7 +255,7 @@ class WizLib {
         let yearDifference = date1.getFullYear() - date2.getFullYear();
 
         return yearDifference;
-    }    
+    }   
 }
 
 /*
