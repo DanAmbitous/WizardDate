@@ -323,7 +323,7 @@ class WizLib { //Methods made by Danial
         }, 1000);
     }
 
-    /*secondToHMS(seconds) { //Not working
+    secondToHMS(seconds) { 
         let hour = parseInt(seconds / 3600);
         let remainderSeconds = parseInt(seconds % 3600);
         let minute = parseInt(remainderSeconds / 60);
@@ -334,18 +334,27 @@ class WizLib { //Methods made by Danial
         second = second < 10 ? `0${second}` : second;
       
         return `${hour}:${minute}:${second}`;
-    }*/
+    }
 
     timerHour(seconds) {
-        let intervalTimer = setInterval(function() {
-            if (seconds === 0) {
-              clearInterval(intervalTimer);
-            }
+        let interval = setInterval(function () {
+            let hour = parseInt(seconds / 3600);
+            let secondRemainder = parseInt(seconds % 3600);
+            let minute = parseInt(secondRemainder / 60);
+            let second = parseInt(secondRemainder % 60);
 
-            secondToHMS(seconds);
+            hour = hour < 10 ? `0${hour}` : hour;
+            minute = minute < 10 ? `0${minute}` : minute;
+            second = second < 10 ? `0${second}` : second;
+
+            console.log(`${hour}:${minute}:${second}`);
 
             seconds--;
-        }, 1000)
+
+            if (seconds < 0) {
+                clearInterval(interval);
+            }
+        }, 1000);
     }
 }
 
